@@ -9,6 +9,14 @@
 <body class="dark-mode">
     <header>
         <h1>Welcome to My Portfolio</h1>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/artie-elkins-8aa471280/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                🔗 LinkedIn
+            </a>
+            <a href="https://github.com/arelk68" target="_blank" class="social-icon" aria-label="GitHub">
+                🐙 GitHub
+            </a>
+        </div>
     </header>
     
     <section class="projects">
@@ -17,15 +25,19 @@
     </section>
     
     <script>
-        // List of projects (add your project folder names here)
-        const projects = ['Jan25_Hackathon'];
-        
-        const projectList = document.getElementById('project-list');
-        projects.forEach(project => {
-            const projectItem = document.createElement('div');
-            projectItem.classList.add('project');
-            projectItem.innerHTML = `<a href="./${project}/" target="_blank">${project}</a>`;
-            projectList.appendChild(projectItem);
+        document.addEventListener("DOMContentLoaded", () => {
+            const projects = ['Jan25_Hackathon']; // Add more projects as needed
+            const projectList = document.getElementById('project-list');
+            const fragment = document.createDocumentFragment();
+
+            projects.forEach(project => {
+                const projectItem = document.createElement('div');
+                projectItem.classList.add('project');
+                projectItem.innerHTML = `<a href="./${project}/" target="_blank" aria-label="Open ${project}">${project}</a>`;
+                fragment.appendChild(projectItem);
+            });
+
+            projectList.appendChild(fragment);
         });
     </script>
     
@@ -43,6 +55,25 @@
             color: white;
             padding: 1rem;
         }
+        .social-links {
+            margin-top: 10px;
+        }
+        .social-icon {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            margin: 0 10px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            background: #444;
+            display: inline-block;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .social-icon:hover {
+            background: #555;
+            transform: scale(1.1);
+        }
         .grid {
             display: flex;
             flex-wrap: wrap;
@@ -54,13 +85,22 @@
             background: #333;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
         }
         .project a {
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
             color: #6a0dad;
+            transition: color 0.2s;
+        }
+        .project a:hover {
+            color: #bb86fc;
         }
         .dark-mode {
             background-color: #222;
