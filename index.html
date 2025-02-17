@@ -27,13 +27,14 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const projects = ['Jan25_Hackathon']; // Add more projects as needed
+            const projectsURL = ['Jan25_Hackathon']; //URL for added projects
             const projectList = document.getElementById('project-list');
             const fragment = document.createDocumentFragment();
 
             projects.forEach(project => {
                 const projectItem = document.createElement('div');
                 projectItem.classList.add('project');
-                projectItem.innerHTML = `<a href="./${project}/" target="_blank" aria-label="Open ${project}">${project}</a>`;
+                projectItem.innerHTML = `<a href="./${projectsURL}/" target="_blank" aria-label="Open ${project}">${project}</a>`;
                 fragment.appendChild(projectItem);
             });
 
